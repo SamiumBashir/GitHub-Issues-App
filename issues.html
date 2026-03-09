@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Issues Dashboard</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+
+<!-- NAVBAR -->
+
+<div class="bg-white shadow p-4 flex flex-col md:flex-row gap-5 justify-between items-center">
+
+<div class="flex items-center gap-2">
+<img src="./assets/github-logo.png" class="w-8">
+<h1 class="font-bold text-lg">GitHub Issues Tracker</h1>
+</div>
+
+<div class="flex gap-2">
+
+<input id="searchInput" placeholder="Search issues..."
+class="border p-2 rounded">
+
+<button onclick="searchIssues()"
+class="bg-blue-600 text-white px-4 rounded">
+Search
+</button>
+
+</div>
+
+</div>
+
+<!-- CONTENT -->
+
+<div class="max-w-7xl mx-auto p-6">
+
+<!-- TABS -->
+
+<div class="bg-white rounded-xl shadow p-4 mb-6 flex gap-4">
+
+<button onclick="loadIssues('all')" id="tab-all"
+class="px-6 py-2 rounded hover:bg-blue-600 border hover:text-white">All</button>
+
+<button onclick="loadIssues('open')" id="tab-open"
+class="px-6 py-2 border rounded hover:bg-blue-600 hover:text-white">Open</button>
+
+<button onclick="loadIssues('closed')" id="tab-closed"
+class="px-6 py-2 border rounded hover:bg-blue-600 hover:text-white">Closed</button>
+
+</div>
+
+<!-- HEADER -->
+
+<div class="flex justify-between items-center mb-6 p-5">
+
+<div class="flex gap-2">
+    <div class="bg-[#ECE4FF] w-[50px] h-[50px] rounded-full flex justify-center items-center">
+        <img src="./assets/Aperture.png" alt="aperture" class="w-8">
+    </div>
+<div>
+    <h2 class="text-xl font-bold">
+    50 Issues
+</h2>
+<p class="text-[#64748B]">
+    Track and manage your project issues
+</p>
+</div>
+</div>
+
+<div class="flex gap-4 text-sm">
+<span class="text-green-500">● Open</span>
+<span class="text-purple-600">● Closed</span>
+</div>
+
+</div>
+
+<!-- LOADING -->
+
+<div id="loader" class="hidden text-center py-20">
+Loading...
+</div>
+
+<!-- GRID -->
+
+<div id="issuesContainer"
+class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+</div>
+
+</div>
+
+<!-- MODAL -->
+
+<div id="modal"
+class="fixed inset-0 bg-black bg-opacity-40 hidden flex justify-center items-center">
+
+<div class="bg-white rounded-xl w-[500px] p-6">
+
+<h2 id="modalTitle" class="text-xl font-bold mb-2"></h2>
+<p id="modalDesc" class="text-gray-600 mb-4"></p>
+
+<div class="grid grid-cols-2 gap-3 text-sm">
+
+<p><b>Author:</b> <span id="modalAuthor"></span></p>
+<p><b>Status:</b> <span id="modalStatus"></span></p>
+<p><b>Priority:</b> <span id="modalPriority"></span></p>
+<p><b>Created:</b> <span id="modalDate"></span></p>
+
+</div>
+
+<button onclick="closeModal()"
+class="mt-6 bg-blue-600 text-white px-5 py-2 rounded">
+Close
+</button>
+
+</div>
+
+</div>
+
+<script src="issues.js"></script>
+
+</body>
+</html>
